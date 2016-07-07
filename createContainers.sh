@@ -1,11 +1,16 @@
 #!/bin/bash
 
+TRAKT_ACCOUNT=${TRAKT_ACCOUNT:-shivshav}
+
 TORRENT_DL_DIR=${TORRENT_DL_DIR:-/mnt/media/download/torrent}
 TR_CONFIG_DIR=${TR_CONFIG_DIR:-/mnt/media/config/transmission-daemon}
+TR_USERNAME=${TR_USERNAME:-shiv}
+TR_PASSWORD=${TR_PASSWORD:-glipglop}
 
 SR_TV_SHOW_DIR=${SR_TV_SHOW_DIR:-/mnt/media/tv_shows}
 SR_CONFIG_DIR=${SR_CONFIG_DIR:-/mnt/media/config/sickrage}
 SR_POST_PROC_DIR=${SR_POST_PROC_DIR:-$TORRENT_DL_DIR/completed/tv}
+
 
 # TODO: This doesn't create subdirs if toplevel exists 
 # TODO: Unfortunately we can't rely on the container to already have these dirs as the upstream image already declares
@@ -38,3 +43,10 @@ docker run -d \
     shiv/rpi-sickrage
 
 # Create flexget container
+docker run -d \
+    --restart='always' \
+    -e TR_USERNAME=${TR_USERNAME} \
+    -e TR_PASSWORD=${TR_PASSWORD} \
+    -e TRAKT_ACCOUNT=${TRAKT_ACCOUNT} \
+    --name flexget \
+    shiv/rpi-flexget

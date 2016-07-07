@@ -1,0 +1,12 @@
+[submodule "rpi-sickrage"]
+	path = rpi-sickrage
+	url = https://github.com/shivshav/rpi-docker-sickrage.git
+	branch = media-server
+[submodule "rpi-flexget"]
+	path = rpi-flexget
+	url = https://github.com/shivshav/rpi-docker-flexget.git
+	branch = media-server
+[submodule "rpi-transmission"]
+	path = rpi-transmission
+	url = https://github.com/shivshav/rpi-docker-transmission.git
+	branch = media-server
