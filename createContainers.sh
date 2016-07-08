@@ -4,6 +4,7 @@ TRAKT_ACCOUNT=${TRAKT_ACCOUNT:-shivshav}
 
 TORRENT_DL_DIR=${TORRENT_DL_DIR:-/mnt/media/download/torrent}
 TR_CONFIG_DIR=${TR_CONFIG_DIR:-/mnt/media/config/transmission-daemon}
+OVERWRITE_CONFIG=${OVERWRITE_CONFIG:-true}
 TR_USERNAME=${TR_USERNAME:-shiv}
 TR_PASSWORD=${TR_PASSWORD:-glipglop}
 
@@ -26,6 +27,9 @@ docker run -d \
     -p 9091:9091 \
     -p 51413:51413 \
     -p  51413:51413/udp \
+    -e OVERWRITE_CONFIG=$OVERWRITE_CONFIG \
+    -e TR_USERNAME=$TR_USERNAME \
+    -e TR_PASSWORD=$TR_PASSWORD \
     -v $TORRENT_DL_DIR:/var/lib/transmission-daemon/downloads \
     -v $TR_CONFIG_DIR:/etc/transmission-daemon \
     --restart='always' \
