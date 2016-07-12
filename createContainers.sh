@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TRAKT_ACCOUNT=${TRAKT_ACCOUNT:-shivshav}
-
+SKIP_TRAKT_AUTH=${SKIP_TRAKT_AUTH:-true}
 TORRENT_DL_DIR=${TORRENT_DL_DIR:-/mnt/media/download/torrent}
 TR_CONFIG_DIR=${TR_CONFIG_DIR:-/mnt/media/config/transmission-daemon}
 OVERWRITE_CONFIG=${OVERWRITE_CONFIG:-true}
@@ -39,6 +39,10 @@ docker run -d \
 # Create HomeBrewed SickRage container
 docker run -d \
     -p 8081:8081 \
+    -e OVERWRITE_CONFIG=$OVERWRITE_CONFIG \
+    -e TR_USERNAME=$TR_USERNAME \
+    -e TR_PASSWORD=$TR_PASSWORD \
+    -e TRAKT_ACCOUNT=$TRAKT_ACCOUNT \
     -v $SR_TV_SHOW_DIR:/data/tvshows \
     -v $SR_CONFIG_DIR:/opt/SickRage/data \
     -v $SR_POST_PROC_DIR:/data/completed_downloads \
@@ -49,8 +53,9 @@ docker run -d \
 # Create flexget container
 docker run -d \
     --restart='always' \
-    -e TR_USERNAME=${TR_USERNAME} \
-    -e TR_PASSWORD=${TR_PASSWORD} \
-    -e TRAKT_ACCOUNT=${TRAKT_ACCOUNT} \
+    -e TR_USERNAME=$TR_USERNAME \
+    -e TR_PASSWORD=$TR_PASSWORD \
+    -e TRAKT_ACCOUNT=$TRAKT_ACCOUNT \
+    -e SKIP_TRAKT_AUTH=$SKIP_TRAKT_AUTH \
     --name flexget \
     shiv/rpi-flexget
