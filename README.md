@@ -40,11 +40,9 @@ Get the trakt pin from flexget
 docker logs flexget | grep -i pin
 ```
 
-Navigate to https://trakt.tv/activate and input the pin from previous step
+Navigate to https://trakt.tv/activate and input the pin from previous step to authorize FlexGet
 
-**TODO** Get actual url for trakt settings page on SickRage
-
-Go to `http://<your-pi-IP>:8081/` and click `Authorize Trakt` to initiate setup procedure for SickRage
+Go to `http://<your-pi-IP>:8081/config/notifications/` and click `Authorize Trakt` to initiate setup procedure for SickRage
 
 ## Deployment
 **TODO**
