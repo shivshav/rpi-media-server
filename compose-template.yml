@@ -1,0 +1,52 @@
+version: '2'
+services:
+    transmission:
+        build: rpi-transmission
+        image: shiv/rpi-transmission
+        restart: always
+        networks:
+            - torrent
+        environment:
+            - OVERWRITE_CONFIG=${OVERWRITE_CONFIG}
+            - TR_USERNAME=${TR_USERNAME}
+            - TR_PASSWORD=${TR_PASSWORD}
+        ports:
+            - "9091:9091"
+            - "51413:51413"
+            - "51415:51413/udp"
+        volumes:
+            - ${TORRENT_DL_DIR}:/var/lib/transmission-daemon/downloads
+            - ${TR_CONFIG_DIR}:/etc/transmission-daemon
+
+    sickrage:
+        build: rpi-sickrage
+        image: shiv/rpi-sickrage
+        restart: always
+        networks:
+            - torrent
+        environment:
+            - OVERWRITE_CONFIG=${OVERWRITE_CONFIG}
+            - TR_USERNAME=${TR_USERNAME}
+            - TR_PASSWORD=${TR_PASSWORD}
+            - TRAKT_ACCOUNT=${TRAKT_ACCOUNT}
+        ports:
+            - "8081:8081"
+        volumes:
+            - ${SR_TV_SHOW_DIR}:/data/tvshows
+            - ${SR_CONFIG_DIR}:/opt/SickRage/data
+            - ${SR_POST_PROC_DIR}:/data/completed_downloads
+
+    flexget:
+        build: rpi-flexget
+        image: shiv/rpi-flexget
+        restart: always
+        environment:
+            - TR_USERNAME=${TR_USERNAME}
+            - TR_PASSWORD=${TR_PASSWORD}
+            - TRAKT_ACCOUNT=${TRAKT_ACCOUNT}
+            - SKIP_TRAKT_AUTH=${SKIP_TRAKT_AUTH}
+        networks:
+            - torrent
+
+networks:
+    torrent:
