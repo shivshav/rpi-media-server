@@ -33,7 +33,7 @@ Start the containers
 ### Setting up the integrations with Trakt
 Get the trakt pin from flexget
 ```
-docker logs flexget | grep -i pin
+docker logs flexget | grep -i "user code"
 ```
 
 Navigate to https://trakt.tv/activate and input the pin from previous step to authorize FlexGet
