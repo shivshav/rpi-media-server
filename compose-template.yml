@@ -41,12 +41,15 @@ services:
         image: shiv/rpi-flexget
         restart: always
         environment:
+            - OVERWRITE_CONFIG=${OVERWRITE_CONFIG}
             - TR_USERNAME=${TR_USERNAME}
             - TR_PASSWORD=${TR_PASSWORD}
             - TRAKT_ACCOUNT=${TRAKT_ACCOUNT}
             - SKIP_TRAKT_AUTH=${SKIP_TRAKT_AUTH}
         networks:
             - torrent
+        volumes:
+            - ${FG_CONFIG_DIR}:/data/flexget
 
 networks:
     torrent:
