@@ -9,6 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisities
 
 - Raspberry Pi with Docker installed (See [here](http://blog.hypriot.com/getting-started-with-docker-and-linux-on-the-raspberry-pi/) for a ready-made image)
+- [Docker Compose](https://docs.docker.com/compose/) (See [here](http://blog.hypriot.com/post/your-number-one-source-for-docker-on-arm/) for adding apt repository to `apt-get install docker-compose`)
 - [Trakt](https://trakt.tv/auth/join) account
 
 ### Installing
@@ -20,11 +21,6 @@ git clone --recursive https://github.com/shivshav/rpi-media-server
 ```
 cd rpi-media-server
 ```
-Build the containers
-```
-./build-all.sh
-```
-
 Change variables in `env.sh` to suit your personal setup
 ```
 vim env.sh
