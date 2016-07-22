@@ -9,3 +9,4 @@ export TR_PASSWORD=glipglop
 export SR_TV_SHOW_DIR=/mnt/media/tv_shows
 export SR_CONFIG_DIR=/mnt/media/config/sickrage
 export SR_POST_PROC_DIR=$TORRENT_DL_DIR/completed/tv
+export FG_CONFIG_DIR=/mnt/media/config/flexget
