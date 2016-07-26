@@ -49,7 +49,9 @@ services:
         networks:
             - torrent
         volumes:
-            - ${FG_CONFIG_DIR}:/data/flexget
+            - ${FG_MOVIE_DIR}:/data/sorted/movies
+            - ${FG_CONFIG_DIR}:/data/config
+            - ${FG_POST_PROC_DIR}:/data/completed_downloads/movies
 
 networks:
     torrent:
