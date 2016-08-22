@@ -10,3 +10,6 @@
 	path = rpi-transmission
 	url = https://github.com/shivshav/rpi-docker-transmission.git
 	branch = media-server
+[submodule "rpi-kodi-db"]
+	path = rpi-kodi-db
+	url = https://github.com/shivshav/rpi-docker-kodi-db.git

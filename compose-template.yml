@@ -53,5 +53,16 @@ services:
             - ${FG_CONFIG_DIR}:/data/config
             - ${FG_POST_PROC_DIR}:/data/completed_downloads/movies
 
+    kodi_db:
+      build: rpi-kodi-db
+      image: shiv/rpi-kodi-db
+      restart: always
+      environment:
+          - KODI_DB_USER=${KODI_DB_USER}
+          - KODI_DB_PASSWORD=${KODI_DB_PASSWORD}
+          - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      ports:
+          - "3306:3306"
+
 networks:
     torrent:

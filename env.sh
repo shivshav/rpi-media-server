@@ -12,3 +12,6 @@ export SR_POST_PROC_DIR=$TORRENT_DL_DIR/completed/tv
 export FG_MOVIE_DIR=/mnt/media/movies
 export FG_CONFIG_DIR=/mnt/media/config/flexget
 export FG_POST_PROC_DIR=$TORRENT_DL_DIR/completed/movie
+export KODI_DB_USER=kodi
+export KODI_DB_PASSWORD=kodi
+export MYSQL_ROOT_PASSWORD=glipglop
